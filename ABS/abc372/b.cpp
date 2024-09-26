@@ -15,6 +15,7 @@ int main() {
       a.push_back(i);
     }
   }
+
   cout << a.size() << endl;
   for (int na : a)
     cout << na << " ";
