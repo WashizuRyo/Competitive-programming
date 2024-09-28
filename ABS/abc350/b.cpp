@@ -4,20 +4,13 @@ using namespace std;
 using P = pair<int, int>;
 
 int main() {
-  int n, q;
-  cin >> n >> q;
-  vector<bool> teeth(n, true);
-  rep(i, q) {
-    int t;
-    cin >> t;
-    t--;
-    teeth[t] = !teeth[t];
-  }
-  int cnt = 0;
-  rep(i, n) {
-    if (teeth[i] == true) {
-      cnt++;
+  string s;
+  cin >> s;
+  set<string> st;
+  rep(i, s.size()) {
+    for (int j = 1; i + j <= s.size(); j++) {
+      st.insert(s.substr(i, j));
     }
   }
-  cout << cnt << endl;
+  cout << st.size() << endl;
 }
