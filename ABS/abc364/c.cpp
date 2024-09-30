@@ -31,7 +31,6 @@ int main() {
       break;
     }
   }
-
   int ans = 0;
   if (eat1 == 0) eat1 = n;
   if (eat2 == 0) eat2 = n;
