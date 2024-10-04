@@ -2,23 +2,24 @@
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (n); i++)
 using P = pair<int, int>;
+using ll = long long;
 
 int main() {
-  int n, t, p, cnt;
-  cin >> n >> t >> p;
-  vector<int> L(100);
-  rep(i, n) cin >> L[i];
-  rep(i, t) {
-    cnt = 0;
-    rep(j, n) {
-      if (L[j] + i >= t) cnt++;
-    }
-    if (cnt >= p) {
-      cout << i << endl;
-      return 0;
+  string s, t;
+  cin >> s >> t;
+  for (int w = 1; w < s.size(); w++) {
+    for (int c = 0; c < w; c++) {
+      string now = "";
+      for (int i = c; i < s.size(); i += w) {
+        now += s[i];
+      }
+      if (now == t) {
+        cout << "Yes" << endl;
+        return 0;
+      }
     }
   }
-  cout << "0" << endl;
-}
 
-// 1 2 3 6 11 count = 1 nokori = 3 - 1 = 2 L.size() = 5
+  cout << "No" << endl;
+  return 0;
+}
