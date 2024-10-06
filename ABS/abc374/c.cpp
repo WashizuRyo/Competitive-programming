@@ -6,6 +6,7 @@ using ll = long long;
 
 int main() {
   int n, ans = 1e9;
+  int test = 0;
   cin >> n;
   vector<int> k(n);
   rep(i, n) cin >> k[i];
