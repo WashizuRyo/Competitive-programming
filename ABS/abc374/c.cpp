@@ -5,20 +5,21 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n;
+  int n, ans = 1e9;
   cin >> n;
   vector<int> k(n);
   rep(i, n) cin >> k[i];
-  int abs = 0;
-  for (int bit = 0; bit < (1 << k.size()); ++bit) {
-    int sum = 0;
-    rep(i, k.size()) {
-      if (bit & (1 << i)) {
-        sum += k[i];
-      }
+  for (int bit = 0; bit < (1 << n); ++bit) {
+    int sumA = 0, sumB = 0;
+    rep(i, n) {
+      if ((bit >> i) & 1)
+        sumA += k[i];
+      else
+        sumB += k[i];
     }
-    abs = max(abs, sum - abs);
+    int now = max(sumA, sumB);
+    ans = min(ans, now);
   }
 
-  cout << abs << endl;
+  cout << ans << endl;
 }
