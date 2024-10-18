@@ -7,20 +7,24 @@ using ll = long long;
 int main() {
   int n, k;
   cin >> n >> k;
-  vector<int> a(n);
-  vector<bool> b(n, false);
+  vector<int> c(n);
+  vector<bool> b(k, false);
   ll ans = 0;
   rep(i, n) {
     int a;
     cin >> a;
-    if (a >= 1 && a <= n) {
+    if (a >= 1 && a <= k) {
       b[a - 1] = true;
+      c[i] = a;
     }
   }
-  rep(i, n) {
-    if (b[i] == false) {
-      ans += b[i];
+
+  ll accu = 0;
+  for (int i = 1; i <= k; i++) {
+    accu += i;
+    if (b[i - 1] == true) {
+      ans += i;
     }
   }
-  cout << ans << endl;
+  cout << accu - ans << endl;
 }
