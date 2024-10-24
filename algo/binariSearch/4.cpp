@@ -5,19 +5,24 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n, m;
-  cin >> n >> m;
-  vector<int> a(n), b(m);
-  rep(i, n) cin >> a[i];
-  rep(i, m) cin >> b[i];
-  sort(a.begin(), a.end());
-  int ans = 0;
-  rep(i, m) {
+  int n;
+  cin >> n;
+  vector<int> w(n);
+  vector<int> sorted_w(n);
+  rep(i, n) {
+
+    cin >> w[i];
+    sorted_w[i] = w[i];
+  }
+
+  sort(sorted_w.begin(), sorted_w.end());
+
+  rep(i, n) {
     int ok = -1;
     int ng = n;
     while (ng - ok > 1) {
       int mid = (ok + ng) / 2;
-      if (a[mid] <= b[i]) {
+      if (sorted_w[mid] < w[i]) {
         ok = mid;
       } else {
         ng = mid;

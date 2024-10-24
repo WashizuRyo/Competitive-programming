@@ -5,19 +5,19 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n, m;
-  cin >> n >> m;
-  vector<int> a(n), b(m);
+  int n, k;
+  cin >> n >> k;
+  vector<int> a(n);
+  vector<int> x(k);
   rep(i, n) cin >> a[i];
-  rep(i, m) cin >> b[i];
-  sort(a.begin(), a.end());
-  int ans = 0;
-  rep(i, m) {
+  rep(i, k) cin >> x[i];
+
+  rep(i, n) {
     int ok = -1;
-    int ng = n;
+    int ng = k;
     while (ng - ok > 1) {
       int mid = (ok + ng) / 2;
-      if (a[mid] <= b[i]) {
+      if (x[mid] <= a[i]) {
         ok = mid;
       } else {
         ng = mid;
