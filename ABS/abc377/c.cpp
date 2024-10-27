@@ -5,18 +5,22 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n, m;
+  int n, m, a, b;
   cin >> n >> m;
-  vector<int> a(m), b(m);
-  rep(i, m) cin >> a[i] >> b[i];
-  vector<vector<bool>> arr(n, vector<bool>(n, false));
+  set<P> ans;
+  const vector<int> massi = {2, 1, -1, -2, -2, -1, 1, 2, 0};
+  const vector<int> massj = {1, 2, 2, 1, -1, -2, -2, -1, 0};
 
-  rep(i, n) {
-    if (b[i] == 1 && b[i] > 2 && b[i] <= n - 2) {
-      arr[a[i] - 2][b[i] + 1] = true;
-      arr[a[i] - 1][b[i] + 2] = true;
-      arr[a[i] + 1][b[i] + 2] = true;
-      arr[a[i] + 1][b[i] + 1] = true;
+  rep(i, m) {
+    cin >> a >> b;
+    rep(k, 9) {
+      int ni = a + massi[k];
+      int nj = b + massj[k];
+      if (ni >= 1 && ni <= n && nj >= 1 && nj <= n) {
+        ans.insert({ni, nj});
+      }
     }
   }
+  ll nn = static_cast<ll>(n) * n;
+  cout << nn - ans.size() << endl;
 }
