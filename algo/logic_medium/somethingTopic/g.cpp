@@ -10,12 +10,29 @@ int main() {
   char a = 'A';
   int sum = 0;
   int nextStr = 0;
+  int carry = 1;
+  string result;
   for (int i = s.size() - 1; i >= 0; i--) {
-    nextStr = (s[i] - 64) + 1;
-    if (nextStr = 26) {
-      cout << "A" << endl;
+    if (carry == 0) {
+      result += s[i];
+    }
+
+    char current_char = s[i];
+
+    if (current_char == 'Z') {
+      result += 'A';
+      carry = 1;
+    } else {
+      result += (current_char + 1);
+      carry = 0;
+    }
+
+    if (carry == 1) {
+      result += 'A';
     }
   }
 
-  cout << nextStr << endl;
+  reverse(result.begin(), result.end());
+
+  cout << result << endl;
 }
