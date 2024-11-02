@@ -7,32 +7,19 @@ using ll = long long;
 int main() {
   string s;
   cin >> s;
-  char a = 'A';
-  int sum = 0;
-  int nextStr = 0;
   int carry = 1;
-  string result;
+  string ans;
   for (int i = s.size() - 1; i >= 0; i--) {
-    if (carry == 0) {
-      result += s[i];
-    }
-
-    char current_char = s[i];
-
-    if (current_char == 'Z') {
-      result += 'A';
-      carry = 1;
+    if (s[i] == 'Z') {
+      s[i] = 'A';
     } else {
-      result += (current_char + 1);
-      carry = 0;
+      s[i]++;
+      break;
     }
-
-    if (carry == 1) {
-      result += 'A';
+    if (i == 0) {
+      cout << "A" << s << endl;
+      return 0;
     }
   }
-
-  reverse(result.begin(), result.end());
-
-  cout << result << endl;
+  cout << s << endl;
 }
