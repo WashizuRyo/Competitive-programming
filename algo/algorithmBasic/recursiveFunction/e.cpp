@@ -4,6 +4,8 @@ using namespace std;
 using P = pair<int, int>;
 using ll = long long;
 
+int f(int x) {}
+
 int main() {
   int n, x;
   cin >> n >> x;
