@@ -30,4 +30,12 @@ bool check(int t, vector<int> s) {
   return true;
 }
 
-int main() {}
+int main() {
+  int n, right = 0, left = 0;
+  cin >> n;
+  string s;
+  cin >> s;
+  int t = s.size();
+  while (right < t) {
+  }
+}
