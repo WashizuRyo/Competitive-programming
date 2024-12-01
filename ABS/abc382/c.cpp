@@ -7,28 +7,19 @@ using ll = long long;
 int main() {
   int n, m;
   cin >> n >> m;
-  vector<P> a;
+  vector<int> a(n);
   vector<int> b(m);
 
-  rep(i, n) {
-    int t;
-    cin >> t;
-    a.push_back({t, i + 1});
-  }
+  rep(i, n) cin >> a[i];
+  rep(i, m) cin >> b[i];
 
-  sort(a.begin(), a.end());
-  sort(b.begin(), b.end());
+  rep(i, n - 1) a[i + 1] = min(a[i], a[i + 1]);
 
-  rep(i, m) { cin >> b[i]; }
-
-  rep(i, m) {
-    rep(j, n) {
-      if (b[i] >= a[j].first) {
-        cout << a[j].second << endl;
-        // a.pop_back(a[j]);
-        break;
-      }
-      if (j == n - 1) cout << "-1" << endl;
-    }
+  rep(j, m) {
+    int i = lower_bound(a.begin(), a.end(), b[j], greater<int>()) - a.begin();
+    if (i == n)
+      cout << -1 << endl;
+    else
+      cout << i + 1 << endl;
   }
 }
