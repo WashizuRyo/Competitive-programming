@@ -5,22 +5,34 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n = 1001001;
-  vector<int> array(n);
+  ll n = 1001001001;
+  vector<ll> array(n);
 
   // array[0] ~ array[19]にインデックスに2を掛けた値を代入
   // array[0] = 0, array[1] = 2, array[2] = 4, ... , array[18] = 36, array[19] = 38
-  for (int i = 0; i < n; i++) {
+  for (ll i = 0; i < n; i++) {
     array[i] = i * 2;
   }
+  // array[0] = 3;
+  // array[1] = 10;
+  // array[2] = 20;
+  // array[3] = 30;
+  // array[4] = 45;
+  // array[5] = 50;
+  // array[6] = 87;
+  // array[7] = 90;
+  // array[8] = 100;
+  // array[9] = 200;
+  // array[10] = 300;
+  // array[11] = 400;
 
   // 見つけたい値
-  int target = 10;
+  ll target = 5000000;
 
-  int left = 0, right = n - 1, count = 0;
+  ll left = 0, right = n - 1, count = 0;
   while (right - left != 0) {
     count++;
-    int mid = (left + right) / 2;
+    ll mid = (left + right) / 2;
     if (array[mid] >= target) {
       right = mid;
     } else {
@@ -28,6 +40,7 @@ int main() {
     }
   }
 
-  cout << count << endl;
-  cout << right << left << endl;
+  cout << "count: " << count << endl;
+  cout << "target index: " << right << endl;
+  cout << "target value: " << array[right] << endl;
 }
