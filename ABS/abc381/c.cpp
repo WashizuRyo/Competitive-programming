@@ -4,38 +4,27 @@ using namespace std;
 using P = pair<int, int>;
 using ll = long long;
 
-bool check(int t, vector<int> s) {
-  if (t % 2 == 0) {
-    cout << "No" << endl;
-    return false;
-  }
-  for (int i = 0; i < ((t + 1) / 2) - 1; i++) {
-    if (s[i] != '1') {
-      cout << "No" << endl;
-      return false;
-    }
-  }
-  if (s[(t + 2) / 2 - 1] != '/') {
-    cout << "No" << endl;
-    return false;
-  }
-
-  for (int i = (t + 2) / 2; i < t; i++) {
-    if (s[i] != '2') {
-      cout << "No" << endl;
-      return false;
-    }
-  }
-
-  return true;
-}
-
 int main() {
-  int n, right = 0, left = 0;
-  cin >> n;
+  int n;
   string s;
+  cin >> n;
   cin >> s;
-  int t = s.size();
-  while (right < t) {
+
+  int ans = 0;
+  rep(i, n) {
+    if (s[i] != '/') continue;
+    int count = 0;
+    while (true) {
+      int left = i - (count + 1), right = i + (count + 1);
+      if (left < 0 || left >= n) break;
+      if (right < 0 || right >= n) break;
+      if (s[left] != '1') break;
+      if (s[right] != '2') break;
+      count++;
+    }
+
+    ans = max(ans, 1 + count * 2);
   }
+
+  cout << ans << endl;
 }
