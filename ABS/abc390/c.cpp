@@ -10,15 +10,24 @@ int main() {
   vector<string> s(h);
   rep(i, h) cin >> s[i];
 
-  int a = 0, b = 0, c = 0, d = 0;
+  int a = h, b = 0, c = w, d = 0;
   rep(i, h) {
     rep(j, w) {
       if (s[i][j] == '#') {
-
-        continue;
+        a = min(a, i), b = max(b, i);
+        c = min(c, j), d = max(d, j);
       }
     }
   }
-}
 
-// cout << "Yes" << endl;
+  for (int i = a; i <= b; i++) {
+    for (int j = c; j <= d; j++) {
+      if (s[i][j] == '.') {
+        cout << "No" << endl;
+        return 0;
+      }
+    }
+  }
+
+  cout << "Yes" << endl;
+}
