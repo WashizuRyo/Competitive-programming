@@ -5,17 +5,31 @@ using P = pair<int, int>;
 using ll = long long;
 
 int main() {
-  int n, q;
+  int n, q, ans = 0;
   cin >> n >> q;
-  vector<int> count(1, n);
+  vector<int> count(n, 1);
+  vector<int> hato(n);
+  rep(i, n) { hato[i] = i; }
   rep(i, q) {
     int type, p, h;
     cin >> type;
     if (type == 1) {
       cin >> p >> h;
-      count[h - 1]++;
+      p--, h--;
 
+      count[h]++;
+      if (count[h] == 2) {
+        ans++;
+      }
+
+      count[hato[p]]--;
+      if (count[hato[p]] == 1) {
+        ans--;
+      }
+
+      hato[p] = h;
     } else {
+      cout << ans << endl;
     }
   }
 }
