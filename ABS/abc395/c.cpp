@@ -9,13 +9,25 @@ int main() {
   cin >> n;
 
   vector<int> a(n);
-  set<pair<int, int>> ans;
-  rep(i, n) {
-    cin >> a[i];
-    ans.insert({a[i], i});
+  rep(i, n) cin >> a[i];
+  vector<int> cnt(1000005);
+  int l = 0;
+  int INF = numeric_limits<int>::max();
+  int ans = INF;
+
+  rep(r, n) {
+    cnt[a[r]]++;
+
+    while (cnt[a[r]] > 1) {
+      ans = min(ans, r - l + 1);
+      cnt[a[l]]--;
+      l++;
+    }
   }
 
-  rep(i, n) {
-    // auto it = ans.lower_bound(a[i]);
+  if (ans == INF) {
+    cout << -1 << endl;
+  } else {
+    cout << ans << endl;
   }
 }
