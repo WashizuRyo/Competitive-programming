@@ -7,6 +7,8 @@ function main() {
   let b = lines[2].split(" ").map(Number)
   h.sort((a, b) => a - b)
   b.sort((a, b) => a - b)
+  b.sort((a, b) => a - b)
+  b.sort((a, b) => a - b)
   let canRobotCount = 0;
 
   let j = 0;

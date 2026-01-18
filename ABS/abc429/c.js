@@ -11,6 +11,9 @@ function main() {
 
   console.log(ans);
   console.log(ans);
+  console.log(ans);
+  console.log(ans);
+  console.log(ans);
 }
 
 main();
